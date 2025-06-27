@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SnapPDFImg – تحويل PDF إلى صور والعكس</title>
-  
-   <!-- كود Google Analytics -->
+
+<!-- كود Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHVSDLP6MX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,120 +18,134 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7999209256244874"
      crossorigin="anonymous"></script>
 
-  <!-- SEO -->
-  <meta name="description" content="أداة سريعة وآمنة لتحويل PDF إلى صور والعكس (صور إلى PDF) بدقة عالية مباشرة من المتصفح." />
-  <meta name="keywords" content="تحويل PDF إلى صور, تحويل صور إلى PDF, PDF to PNG, PDF to JPG, PNG to PDF, JPG to PDF, أداة اونلاين, SnapPDFImg" />
-  <meta name="author" content="TMGWEB" />
 
+  <!-- SEO -->
+  <meta name="description" content="أداة سريعة وآمنة لتحويل PDF إلى صور والعكس (صور إلى PDF) بدقة عالية مباشرة من المتصفح.">
+  <meta name="keywords" content="تحويل PDF إلى صور, تحويل صور إلى PDF, PDF to PNG, PDF to JPG, PNG to PDF, JPG to PDF, SnapPDFImg">
+  <meta name="author" content="TMGWEB">
   <!-- Open Graph -->
-  <meta property="og:title" content="SnapPDFImg – أسهل طريقة لتحويل PDF إلى صور والعكس" />
-  <meta property="og:description" content="حوّل صفحات PDF إلى صور أو العكس بخطوة واحدة وبدون تحميل ملفك إلى أي خادم." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tahaghoch.github.io/SnapPDFImg/" />
-  <meta property="og:image" content="https://tahaghoch.github.io/SnapPDFImg/icon-512.png" />
+  <meta property="og:title" content="SnapPDFImg – أسهل طريقة للتحويل بين PDF والصور">
+  <meta property="og:description" content="حوّل صفحات PDF إلى صور أو العكس بخطوة واحدة وبدون رفع ملفاتك إلى خوادم خارجية.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tahaghoch.github.io/SnapPDFImg/">
+  <meta property="og:image" content="https://tahaghoch.github.io/SnapPDFImg/icon-512.png">
+
+  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon-192.png" type="image/png">
+
+  <!-- Styles -->
   <!-- Styles -->
   <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --text: #1f2937;
+    :root 
+    { --primary:#2563eb; 
+    --bg:#f8fafc; 
+    --text:#1f2937; 
     }
-    * 
+    *
     {
-        box-sizing: border-box;
+      box-sizing:border-box
     }
-    body 
-    {margin: 0; 
-        font-family: 'Cairo', sans-serif; 
-        background: var(--bg); 
-        color: var(--text);
-    } 
-    header 
+    body
     {
-        background: var(--primary); 
-        color:#fff; 
-        padding: 2rem 1rem; 
-        text-align:center;
+      margin:0;
+      font-family:'Cairo',sans-serif;
+      background:var(--bg);
+      color:var(--text)
     }
-    main 
+    header
     {
-        max-width: 900px; 
-        margin: auto; 
-        padding: 2rem 1rem;
+      background:var(--primary);
+      color:#fff;
+      padding:2rem 1rem;
+      text-align:center
     }
-    .uploader 
+    main
     {
-        border:2px dashed var(--primary);
-        padding:2rem; 
-        text-align:center; 
-        cursor:pointer; 
-        background:#fff;
+      max-width:900px;
+      margin:auto;
+      padding:2rem 1rem
     }
-    .uploader:hover 
+    .uploader
     {
-        background:#eef2ff;
+      border:2px dashed var(--primary);
+      padding:2rem;
+      text-align:center;
+      cursor:pointer;
+      background:#fff
     }
-    .hidden {
-        display:none;
-    }
-    #images, #pdfresult 
+    .uploader:hover
     {
-        display:grid; 
-        grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); 
-        gap:1rem; 
-        margin-top:2rem;
+      background:#eef2ff
     }
-    .card 
-    {background:#fff; 
-        padding:1rem;
-        border-radius:8px; 
-        box-shadow:0 2px 6px rgba(0,0,0,.1); 
-        text-align:center;
-    }
-    footer 
+    .hidden
     {
-        text-align:center;
-        font-size:14px; 
-        padding:1rem; 
-        color:#64748b;
+      display:none
     }
-    button 
+    #images,#pdfresult
     {
-        background:var(--primary); 
-        color:#fff; 
-        border:none; 
-        padding:.5rem 1rem; 
-        border-radius:4px; 
-        cursor:pointer;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+      gap:1rem;
+      margin-top:2rem
     }
-    button:hover 
+    .card
     {
-        opacity:.9;
+      background:#fff;
+      padding:1rem;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,.1);
+      text-align:center
     }
-    nav 
+    footer
     {
-        display: flex; 
-        justify-content: center; 
-        gap: 1rem; margin: 1rem 0; 
-        flex-wrap: wrap;
+      text-align:center;
+      font-size:14px;
+      padding:1rem;
+      color:#64748b
     }
-    .install-btns 
+    button
     {
-        text-align: center; 
-        margin: 2rem 0;
+      background:var(--primary);
+      color:#fff;
+      border:none;
+      padding:.5rem 1rem;
+      border-radius:4px;
+      cursor:
+    }
+    button:hover
+    {
+      opacity:.9
+      }
+    nav
+    {
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      margin:1rem 0;
+      flex-wrap:wrap
+    }
+    .install-btns
+    {
+      text-align:center;
+      margin:2rem 0
+    }
+    #loader
+    {
+      text-align:center;
+      color:var(--primary);
+      font-weight:bold;
     }
   </style>
-  <!-- pdf.js -->
+
+  <!-- Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
   <header>
     <h1>SnapPDFImg</h1>
-    <p>تحويل PDF<br>إلى صور أو العكس (صور إلى PDF) مباشرة من متصفحك</p>
+    <p>تحويل PDF إلى صور أو العكس (صور إلى PDF) مباشرة من متصفحك</p>
   </header>
   <main>
     <div class="install-btns">
@@ -144,25 +158,26 @@
       <button onclick="switchMode('img2pdf')">من صور<br>إلى PDF</button>
     </nav>
 
+    <!-- PDF إلى صور -->
     <section id="pdf2imgSection">
-      <label class="uploader" id="uploader">
-        <input type="file" id="pdfFile" accept="application/pdf" class="hidden" />
+      <label class="uploader" id="pdfUploader">
+        <input type="file" id="pdfFile" accept="application/pdf" class="hidden">
         <strong>اسحب ملف PDF هنا أو اضغط لاختياره</strong>
       </label>
       <div id="images"></div>
     </section>
 
+    <!-- صور إلى PDF -->
     <section id="img2pdfSection" class="hidden">
-      <label class="uploader">
-        <input type="file" id="imgFiles" accept="image/*" multiple class="hidden" />
+      <label class="uploader" id="imgUploader">
+        <input type="file" id="imgFiles" accept="image/*" multiple class="hidden">
         <strong>اختر صور JPG أو PNG لإنشاء PDF</strong>
       </label>
       <div id="pdfresult"></div>
     </section>
   </main>
 
-  <!-- Banner Top Home -->
-
+<!-- Banner Top Home -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-7999209256244874"
@@ -173,93 +188,98 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-  <footer>
-    &copy; 2025 SnapPDFImg – جميع الحقوق محفوظة | TMGWEB
-  </footer>
+  <footer>&copy; 2025 SnapPDFImg – جميع الحقوق محفوظة | TMGWEB</footer>
 
   <script>
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-    });
+  let deferredPrompt;
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+  function promptInstall() {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.finally(() => (deferredPrompt = null));
+    } else {
+      alert("من إعدادات المتصفح يمكنك إضافة التطبيق");
+    }
+  }
 
-    function promptInstall() {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          deferredPrompt = null;
-        });
-      } else {
-        alert("من إعدادات المتصفح يمكنك إضافة التطبيق");
-      }
+  function switchMode(mode) {
+    document.getElementById("pdf2imgSection").classList.toggle("hidden", mode!=="pdf2img");
+    document.getElementById("img2pdfSection").classList.toggle("hidden", mode!=="img2pdf");
+  }
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+  const pdfInput   = document.getElementById("pdfFile");
+  const imagesDiv  = document.getElementById("images");
+  pdfInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    imagesDiv.innerHTML = "";
+
+    const spinner = document.createElement("p");
+    spinner.id = "loader";
+    spinner.textContent = "جارٍ التحويل…";
+    imagesDiv.appendChild(spinner);
+
+    const buffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(buffer) }).promise;
+    imagesDiv.removeChild(spinner);
+
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+      const page     = await pdf.getPage(pageNum);
+      const viewport = page.getViewport({ scale: 3 });
+
+      const canvas = document.createElement("canvas");
+      canvas.width  = viewport.width;
+      canvas.height = viewport.height;
+
+      await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
+
+      const imgURL = canvas.toDataURL("image/png");
+      const whatsappURL = `https://wa.me/?text=${encodeURIComponent('شاهد هذه الصورة المحوّلة: ' + imgURL)}`;
+
+      const card   = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${imgURL}" alt="Page ${pageNum}" style="width:100%;height:auto;">
+        <a href="${imgURL}" download="page-${pageNum}.png">
+          <button>تحميل الصفحة ${pageNum}</button>
+        </a>
+        <a href="${whatsappURL}" target="_blank">
+          <button style="background-color:#25D366;margin-top:8px;">مشاركة واتساب</button>
+        </a>`;
+      imagesDiv.appendChild(card);
+    }
+  });
+
+  const imgInput  = document.getElementById("imgFiles");
+  const resultDiv = document.getElementById("pdfresult");
+  imgInput.addEventListener("change", async (e) => {
+    const files = [...e.target.files];
+    if (!files.length) return;
+    resultDiv.innerHTML = "<p id='loader'>يتم إنشاء ملف PDF…</p>";
+
+    const { jsPDF } = window.jspdf;
+    const pdfDoc = new jsPDF();
+
+    for (let i = 0; i < files.length; i++) {
+      const img = await createImageBitmap(files[i]);
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext("2d").drawImage(img, 0, 0);
+      const imgData = canvas.toDataURL("image/jpeg");
+      if (i) pdfDoc.addPage();
+      pdfDoc.addImage(imgData, "JPEG", 10, 10, 190, 0);
     }
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-    function switchMode(mode) {
-      document.getElementById('pdf2imgSection').classList.add('hidden');
-      document.getElementById('img2pdfSection').classList.add('hidden');
-      if (mode === 'pdf2img') {
-        document.getElementById('pdf2imgSection').classList.remove('hidden');
-      } else {
-        document.getElementById('img2pdfSection').classList.remove('hidden');
-      }
-    }
-
-    const fileInput = document.getElementById('pdfFile');
-    const imagesDiv = document.getElementById('images');
-    document.getElementById('uploader').addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      imagesDiv.innerHTML = '<p>جارٍ التحويل، يرجى الانتظار…</p>';
-      const fileReader = new FileReader();
-      fileReader.onload = async function() {
-        const typedarray = new Uint8Array(this.result);
-        const pdf = await pdfjsLib.getDocument({ data: typedarray }).promise;
-        imagesDiv.innerHTML = '';
-        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-          const page = await pdf.getPage(pageNum);
-          const viewport = page.getViewport({ scale: 3 });
-          const canvas = document.createElement('canvas');
-          const context = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-          await page.render({ canvasContext: context, viewport }).promise;
-          const imgURL = canvas.toDataURL('image/png');
-          const card = document.createElement('div');
-          card.className = 'card';
-          card.innerHTML = `<img src="${imgURL}" alt="Page ${pageNum}" style="width:100%;height:auto;"/><a href="${imgURL}" download="page-${pageNum}.png"><button>تحميل الصفحة ${pageNum}</button></a>`;
-          imagesDiv.appendChild(card);
-        }
-      };
-      fileReader.readAsArrayBuffer(file);
-    });
-
-    const imgFiles = document.getElementById('imgFiles');
-    const pdfresult = document.getElementById('pdfresult');
-    document.querySelector('#img2pdfSection label').addEventListener('click', () => imgFiles.click());
-    imgFiles.addEventListener('change', async (e) => {
-      const files = [...e.target.files];
-      if (files.length === 0) return;
-      pdfresult.innerHTML = '<p>يتم إنشاء ملف PDF…</p>';
-
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF();
-      for (let i = 0; i < files.length; i++) {
-        const img = await createImageBitmap(files[i]);
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        canvas.getContext('2d').drawImage(img, 0, 0);
-        const imgData = canvas.toDataURL('image/jpeg');
-        if (i > 0) pdf.addPage();
-        pdf.addImage(imgData, 'JPEG', 10, 10, 190, 0);
-      }
-      const pdfURL = pdf.output('bloburl');
-      pdfresult.innerHTML = `<a href="${pdfURL}" download="converted.pdf"><button>تحميل الملف PDF</button></a>`;
-    });
+    const pdfURL = pdfDoc.output("bloburl");
+    resultDiv.innerHTML = `<a href="${pdfURL}" download="converted.pdf"><button>تحميل الملف PDF</button></a>`;
+  });
   </script>
 </body>
 </html>
