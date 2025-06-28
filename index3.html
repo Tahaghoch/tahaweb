@@ -40,9 +40,9 @@
       <label>اختر الجودة:</label>
       <select id="videoQuality">
         <option value="highestvideo">أعلى جودة</option>
-        <option value="22">720p</option>  <!-- itag 22 progressive -->
-        <option value="135">480p</option> <!-- itag 135 video‑only -->
-        <option value="18">360p</option>  <!-- itag 18 progressive -->
+        <option value="22">720p</option>
+        <option value="135">480p</option>
+        <option value="18">360p</option>
       </select>
       <button onclick="download('video')">تحميل الفيديو</button>
     </section>
@@ -71,26 +71,30 @@
       const url = document.getElementById(urlField).value.trim();
       const quality = document.getElementById("videoQuality").value;
 
-      if(!url){alert("⚠️ الرجاء إدخال رابط صحيح"); return;}
+      if(!url){
+        alert("⚠️ الرجاء إدخال رابط صحيح");
+        return;
+      }
 
-      try{
-        const res = await fetch(API+"/download",{
-          method:"POST",
-          headers:{"Content-Type":"application/json"},
-          body:JSON.stringify({url,type,quality})
+      try {
+        const res = await fetch(API + "/download", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url, type, quality })
         });
-        if(!res.ok) throw new Error("فشل التحميل");
+
+        if (!res.ok) throw new Error("فشل التحميل");
 
         const blob = await res.blob();
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
-        a.download = type==="audio" ? "audio.mp3" : "video.mp4";
-        a.style.display="none";
+        a.download = type === "audio" ? "audio.mp3" : "video.mp4";
+        a.style.display = "none";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(a.href);
-      }catch(e){
+      } catch (e) {
         alert("❌ حدث خطأ أثناء التحميل، تأكد من صحة الرابط.");
         console.error(e);
       }
