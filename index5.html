@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SnapPDFImg – تحويل <br>PDF إلى صور والعكس</title>
+  <title>SnapPDFImg – تحويل PDF إلى صور والعكس</title>
 
-  <!-- Google Analytics -->
+<!-- كود Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHVSDLP6MX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,14 +15,16 @@
   </script>
 
   <!-- Google Adsense -->
-  <meta name="google-adsense-account" content="ca-pub-7999209256244874">
+   <meta name="google-adsense-account" content="ca-pub-7999209256244874">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7999209256244874"
      crossorigin="anonymous"></script>
 
-  <!-- SEO -->
+   <!-- SEO -->
   <meta name="description" content="أداة سريعة وآمنة لتحويل PDF إلى صور والعكس (صور إلى PDF) بدقة عالية مباشرة من المتصفح.">
   <meta name="keywords" content="تحويل PDF إلى صور, تحويل صور إلى PDF, PDF to PNG, PDF to JPG, PNG to PDF, JPG to PDF, SnapPDFImg">
   <meta name="author" content="TMGWEB">
+ 
+  <!-- Open Graph -->
   <meta property="og:title" content="SnapPDFImg – أسهل طريقة للتحويل بين PDF والصور">
   <meta property="og:description" content="حوّل صفحات PDF إلى صور أو العكس بخطوة واحدة وبدون رفع ملفاتك إلى خوادم خارجية.">
   <meta property="og:type" content="website">
@@ -35,55 +37,72 @@
 
   <!-- Styles -->
   <style>
-    :root {
-      --primary: #2563eb;
-      --bg: #f8fafc;
-      --text: #1f2937;
+    :root 
+    { --primary:#2563eb; 
+    --bg:#f8fafc; 
+    --text:#1f2937; 
     }
-    * {
-      box-sizing: border-box;
+    *
+    {
+      box-sizing:border-box
     }
-    body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+    body
+    {
+      margin:0;
+      font-family:'Cairo',sans-serif;
+      background:var(--bg);
+      color:var(--text)
     }
-    header {
-      background: var(--primary);
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
+    header
+    {
+      background:var(--primary);
+      color:#fff;
+      padding:2rem 1rem;
+      text-align:center
     }
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem 1rem;
+    main
+    {
+      max-width:900px;
+      margin:auto;
+      padding:2rem 1rem
     }
-    .uploader {
-      border: 2px dashed var(--primary);
-      padding: 2rem;
-      text-align: center;
-      cursor: pointer;
-      background: #fff;
+    .uploader
+    {
+      border:2px dashed var(--primary);
+      padding:2rem;
+      text-align:center;
+      cursor:pointer;
+      background:#fff
     }
-    .uploader:hover {
-      background: #eef2ff;
+    .uploader:hover
+    {
+      background:#eef2ff
     }
-    .hidden {
-      display: none;
+    .hidden
+    {
+      display:none
     }
-    #images, #pdfresult {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
+    #images,#pdfresult
+    {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+      gap:1rem;
+      margin-top:2rem
     }
-    footer {
-      text-align: center;
-      font-size: 14px;
-      padding: 1rem;
-      color: #64748b;
+    .card
+    {
+      background:#fff;
+      padding:1rem;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,.1);
+      text-align:center
+    }
+    footer
+    {
+      text-align:center;
+      font-size:14px;
+      padding:1rem;
+      color:#64748b
     }
     button {
       background: var(--primary);
@@ -93,24 +112,28 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    button:hover {
-      opacity: .9;
+    button:hover
+    {
+      opacity:.9
+      }
+    nav
+    {
+      display:flex;
+      justify-content:center;
+      gap:1rem;
+      margin:1rem 0;
+      flex-wrap:wrap
     }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
+    .install-btns
+    {
+      text-align:center;
+      margin:2rem 0
     }
-    .install-btns {
-      text-align: center;
-      margin: 2rem 0;
-    }
-    #loader {
-      text-align: center;
-      color: var(--primary);
-      font-weight: bold;
+    #loader
+    {
+      text-align:center;
+      color:var(--primary);
+      font-weight:bold;
     }
   </style>
 
@@ -121,9 +144,8 @@
 <body>
   <header>
     <h1>SnapPDFImg</h1>
-    <p>تحويل PDF<br> إلى صور أو العكس (صور إلى<br> PDF) مباشرة من متصفحك</p>
+    <p>تحويل بي دي أف إلى صور أو العكس <br>(إلى صور PDF)مباشرة من متصفحك</p>
   </header>
-
   <main>
     <div class="install-btns">
       <button onclick="promptInstall()">تنزيل التطبيق</button>
@@ -139,7 +161,7 @@
     <section id="pdf2imgSection">
       <label class="uploader" id="pdfUploader">
         <input type="file" id="pdfFile" accept="application/pdf" class="hidden">
-        <strong>اسحب ملف PDF هنا أو اضغط لاختياره</strong>
+        <strong>اسحب ملف بي دي أف هنا أو اضغط لاختياره</strong>
       </label>
       <div id="images"></div>
     </section>
@@ -148,7 +170,7 @@
     <section id="img2pdfSection" class="hidden">
       <label class="uploader" id="imgUploader">
         <input type="file" id="imgFiles" accept="image/*" multiple class="hidden">
-        <strong>اختر صور JPG أو PNG لإنشاء PDF</strong>
+        <strong>اختر صور لإنشاء بي دي أف</strong>
       </label>
       <div id="pdfresult"></div>
     </section>
@@ -163,8 +185,11 @@
        data-full-width-responsive="true"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
+
+
   <footer>&copy; 2025 SnapPDFImg – جميع الحقوق محفوظة | TMGWEB</footer>
 
+ 
   <script>
     let deferredPrompt;
     window.addEventListener("beforeinstallprompt", (e) => {
