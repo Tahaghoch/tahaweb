@@ -2,103 +2,110 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>محمل الوسائط - تنزيل فيديوهات وأغاني</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تحميل الفيديوهات والأغاني من يوتيوب</title>
 
-  <!-- Google AdSense -->
+  <!-- SEO Tags -->
+  <meta name="description" content="أداة لتحويل وتحميل فيديوهات اليوتيوب إلى MP3 أو MP4 مجاناً وبسهولة عبر أفضل المواقع." />
+  <meta name="keywords" content="تحميل يوتيوب, تحميل فيديو, تحميل أغاني, MP3, MP4, YouTube Downloader" />
+  <meta name="author" content="TMGWEB" />
+
+  <!-- Google AdSense -->
   <meta name="google-adsense-account" content="ca-pub-7999209256244874" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-7999209256244874" crossorigin="anonymous"></script>
 
   <style>
-    body{font-family:'Cairo',sans-serif;background:#f3f4f6;color:#111827;margin:0}
-    header,footer{background:#2563eb;color:#fff;padding:20px;text-align:center}
-    main{max-width:720px;margin:auto;padding:20px}
-    section{background:#fff;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
-    input,select,button{width:100%;padding:12px;margin-top:10px;border:1px solid #ccc;border-radius:6px;font-size:16px}
-    button{background:#2563eb;color:#fff;border:none;cursor:pointer}
-    button:hover{background:#1d4ed8}
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+      color: #1f2937;
+    }
+    header, footer {
+      background-color: #2563eb;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1e40af;
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>📥 محمل الوسائط</h1>
-    <p>حمّل فيديوهات أو أغاني مباشرة من يوتيوب</p>
+    <p>قم بتحويل فيديوهات يوتيوب إلى MP3 أو MP4 بسهولة</p>
   </header>
 
   <main>
-    <!-- تحميل الصوت -->
     <section>
-      <h2>🎵 تحميل أغنية (MP3)</h2>
-      <input type="text" id="audioUrl" placeholder="أدخل رابط الفيديو"/>
-      <button onclick="download('audio')">تحميل الأغنية</button>
+      <h2>أدخل رابط الفيديو</h2>
+      <input type="text" id="videoUrl" placeholder="https://www.youtube.com/watch?v=XXXX" />
+      <button onclick="redirect()">تحميل الآن</button>
     </section>
 
-    <!-- تحميل الفيديو -->
-    <section>
-      <h2>🎥 تحميل فيديو</h2>
-      <input type="text" id="videoUrl" placeholder="أدخل رابط الفيديو"/>
-      <label>اختر الجودة:</label>
-      <select id="videoQuality">
-        <option value="highestvideo">أعلى جودة</option>
-        <option value="22">720p</option>
-        <option value="135">480p</option>
-        <option value="18">360p</option>
-      </select>
-      <button onclick="download('video')">تحميل الفيديو</button>
-    </section>
+    <!-- إعلان أفقي -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-7999209256244874"
+         data-ad-slot="9117689493"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </main>
 
-  <!-- إعلان أفقي -->
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-7999209256244874"
-       data-ad-slot="9117689493"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
-
   <footer>
-    &copy; 2025 محمل الوسائط | TMGWEB
+    &copy; 2025 جميع الحقوق محفوظة | TMGWEB
   </footer>
 
   <script>
-    // رابط خادمك على Render
-    const API = "https://video-api-service.onrender.com";
-
-    // دالة التحميل العامة
-    async function download(type){
-      const urlField = type==="audio" ? "audioUrl" : "videoUrl";
-      const url = document.getElementById(urlField).value.trim();
-      const quality = document.getElementById("videoQuality").value;
-
-      if(!url){
-        alert("⚠️ الرجاء إدخال رابط صحيح");
+    function redirect() {
+      const url = document.getElementById("videoUrl").value.trim();
+      if (!url || !url.includes("youtube.com")) {
+        alert("يرجى إدخال رابط يوتيوب صحيح");
         return;
       }
 
-      try {
-        const res = await fetch(API + "/download", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url, type, quality })
-        });
-
-        if (!res.ok) throw new Error("فشل التحميل");
-
-        const blob = await res.blob();
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = type === "audio" ? "audio.mp3" : "video.mp4";
-        a.style.display = "none";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(a.href);
-      } catch (e) {
-        alert("❌ حدث خطأ أثناء التحميل، تأكد من صحة الرابط.");
-        console.error(e);
+      // مثال تحويل إلى ssyoutube
+      const videoId = new URL(url).searchParams.get("v");
+      if (!videoId) {
+        alert("الرابط غير صالح");
+        return;
       }
+
+      const target = "https://ssyoutube.com/watch?v=" + videoId;
+      window.open(target, "_blank");
     }
   </script>
+
 </body>
 </html>
