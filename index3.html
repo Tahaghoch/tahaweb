@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اختبار تحليل الشخصية - TMG</title>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LHVSDLP6MX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-LHVSDLP6MX');
+  </script>
+
+  <!-- Google AdSense -->
+   <meta name="google-adsense-account" content="ca-pub-7999209256244874">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7999209256244874" crossorigin="anonymous"></script>
+
+    <!-- consol search -->
+  <meta name="google-site-verification" content="gL7FHc-INI5U3FnaKvvDk_j31yBFHT42Ygw7wnATX5E" />
+  
+
+  <meta name="description" content="اختبار شخصية تفاعلي من 20 سؤالًا يحلل شخصيتك ويعطيك النتيجة مباشرة.">
+  <meta name="keywords" content="اختبار شخصية, تحليل الشخصية, اسئلة تفاعلية, اختبار تفاعلي, Quiz personality">
+  <meta name="author" content="TMGWEB">
+
+  <style>
+    :root
+    {
+      --primary:#2563eb;
+      --bg:#f3f4f6;--txt:#1f2937;
+      --radius:12px
+    }
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+      font-family:'Cairo',sans-serif
+    }
+    body
+    {
+      background:var(--bg);
+      color:var(--txt)
+    }
+    header
+    {
+      background:var(--primary);
+      color:#fff;
+      text-align:center;
+      padding:2rem 1rem;
+      border-bottom-left-radius:var(--radius);
+      border-bottom-right-radius:var(--radius)
+    }
+    main
+    {
+      max-width:900px;
+      margin:auto;
+      padding:1.5rem
+    }
+    .question
+    {
+      background:#fff;
+      border-radius:var(--radius);
+      padding:1.5rem;
+      margin-bottom:1.5rem;
+      box-shadow:0 4px 8px rgba(0,0,0,.05)
+    }
+    .options
+    {
+      display:flex;
+      flex-direction:column;
+      gap:.6rem;
+      margin-top:1rem
+    }
+    .options button
+    {
+      background:#e2e8f0;
+      border:none;
+      border-radius:8px;
+      padding:.8rem;
+      font-size:1rem;
+      cursor:pointer;
+      transition:background .3s
+    }
+    .options button:hover
+    {
+      background:#cbd5e1
+    }
+    .result
+    {
+      background:#fff;
+      padding:2rem;
+      border-radius:var(--radius);
+      text-align:center;
+      box-shadow:0 4px 8px rgba(0,0,0,.05)
+    }
+    button.next
+    {
+      margin-top:1rem;
+      background:var(--primary);
+      color:#fff
+    }
+    footer
+    {
+      text-align:center;
+      color:#64748b;
+      font-size:.9rem;
+      padding:1rem
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>اختبار تحليل الشخصية</h1>
+    <p>أجب على 20 سؤالًا واكتشف نمط شخصيتك بالتفصيل</p>
+  </header>
+
+  <!-- أعلى الصفحة إعلان -->
+  <ins class="adsbygoogle" style="display:block;text-align:center;margin:1rem auto" data-ad-client="ca-pub-7999209256244874" data-ad-slot="9117689493" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+
+  <main>
+    <div id="quiz"></div>
+    <div style="text-align:center; margin: 1rem 0;">
+  <button onclick="sharePage()">🔗 شارك الموقع مع أصدقائك</button></div>
+    <div id="result" class="result" style="display:none"></div>
+  </main>
+
+
+   <!-- Banner Top Home -->
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7999209256244874"
+     data-ad-slot="9117689493"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  <footer>&copy; 2025 TMGWEB – جميع الحقوق محفوظة</footer>
+
+  <script>
+    // 20 سؤالًا مع ثلاثة خيارات (A,B,C)
+    const questions=[
+      {q:'كيف تتصرف عند مقابلة أشخاص جدد؟',o:['أبادر بالحديث فورًا','أراقب أولًا ثم أتحدث','أكتفي بالتحية وأنتظر']},
+      {q:'عندما تخطّط لرحلة، ما أول ما تفكر فيه؟',o:['المغامرات والأنشطة','الميزانية والتفاصيل','مع من سأقضي الوقت']},
+      {q:'كيف تتعامل مع التوتر؟',o:['أمارس رياضة أو نشاط','أكتب أفكاري وأحللها','أتحدث مع صديق مقرب']},
+      {q:'أيهما يصفك أكثر؟',o:['حاسم وسريع','منظم ودقيق','متعاون وعطوف']},
+      {q:'ما الذي يجعلك تشعر بالإنجاز؟',o:['تجربة شيء جديد','إتمام مهمة معقدة','مساعدة شخص ما']},
+      {q:'في عطلة نهاية الأسبوع، تفضل؟',o:['نشاطات خارجية','البقاء بالمنزل للقراءة','لقاء الأصدقاء']},
+      {q:'كيف تتخذ قراراتك المهمة؟',o:['باتباع حدسي','بجمع البيانات والتحليل','بالتشاور مع من أثق بهم']},
+      {q:'ما نوع الأفلام المفضل لديك؟',o:['أكشن ومغامرة','وثائقي ودراما','رومانسية واجتماعية']},
+      {q:'إذا تعرّض صديق لمشكلة، ماذا تفعل؟',o:['أقدم حلًا فوريًا','أحلل المشكلة معه','أدعمه عاطفيًا']},
+      {q:'كيف تصف مكتبك أو غرفتك؟',o:['حيوي وغير مرتب','مرتب ومنظم','يحتوي تذكارات وصور']},
+      {q:'في العمل الجماعي أنت غالبًا؟',o:['القائد المبادِر','المخطط والمنسق','الروح الاجتماعية للفريق']},
+      {q:'أكثر ما يزعجك هو؟',o:['الروتين اليومي','الفوضى وعدم النظام','الوحدة']},
+      {q:'عندما تتعلم مهارة جديدة، تفضّل؟',o:['التجريب العملي','قراءة الشروحات المفصلة','التعلم مع مجموعة']},
+      {q:'في حفلة كبيرة، تجد نفسك؟',o:['تتحدث إلى أشخاص كُثر','تركز على محادثة عميقة','تساعد في تنظيم الأجواء']},
+      {q:'أي نوع من الهدايا يفرحك أكثر؟',o:['تجربة أو مغامرة','كتاب أو أداة مفيدة','رسالة شخصية أو شيء رمزي']},
+      {q:'كيف تتفاعل مع التغيير السريع؟',o:['بحماسة وتكيّف سريع','أحتاج خطة واضحة أولًا','أبحث عن دعم الأصدقاء']},
+      {q:'عند حل مشكلة، تبدأ بـ؟',o:['تجربة حلول مختلفة','تحليل الأسباب الجذرية','مناقشة المشاعر المرتبطة']},
+      {q:'ماذا يمثل النجاح بالنسبة لك؟',o:['تحقيق أهدافي ورؤيتي','امتلاك معرفة عميقة','علاقات قوية وسعيدة']},
+      {q:'اختَر النشاط الذي يجذبك أكثر:',o:['تسلّق جبل','متابعة كورس أونلاين','تطوع في حدث خيري']},
+      {q:'أي صفة تعتز بها أكثر؟',o:['الشجاعة','الدقة','التعاطف']}
+    ];
+
+    // الدرجات A,B,C
+    let current=0;
+    const scores={A:0,B:0,C:0};
+
+    const quizDiv=document.getElementById('quiz');
+    const resultDiv=document.getElementById('result');
+
+    function render(){
+      if(current===questions.length){return showResult();}
+      const q=questions[current];
+      quizDiv.innerHTML=`<div class="question">
+        <h3>السؤال ${current+1} من ${questions.length}</h3>
+        <p>${q.q}</p>
+        <div class="options">
+          <button onclick="select('A')">${q.o[0]}</button>
+          <button onclick="select('B')">${q.o[1]}</button>
+          <button onclick="select('C')">${q.o[2]}</button>
+        </div>
+      </div>`;
+    }
+
+    function select(opt){
+      scores[opt]++;
+      current++;
+      render();
+    }
+
+    function showResult(){
+      quizDiv.style.display='none';
+      resultDiv.style.display='block';
+      const dominant=Object.keys(scores).reduce((a,b)=>scores[a]>scores[b]?a:b);
+      const details={
+        A:`\u2022 أنت شخص مبادر وشجاع يحب المغامرة والتجارب الجديدة.\n\u2022 تتحمس للتحديات ولا تخشى المخاطر المحسوبة.\n\u2022 تُلهم من حولك بالطاقة والحماس.\n\u2022 قد تحتاج أحيانًا للتأنّي قبل القرارات الكبيرة.`,
+        B:`\u2022 تتميز بعقل تحليلي ومنظم يركز على التفاصيل.\n\u2022 تبحث دائمًا عن المنطق والأسباب قبل اتخاذ أي قرار.\n\u2022 تحب التعلم المستمر وتطوير مهاراتك بعمق.\n\u2022 احرص على منح نفسك وقتًا للراحة والتواصل الاجتماعي.`,
+        C:`\u2022 شخصية اجتماعية دافئة تهتم بالعلاقات الإنسانية.\n\u2022 تتمتع بقدرة عالية على التعاطف وفهم مشاعر الآخرين.\n\u2022 تجد سعادتك في مساعدة الآخرين وخلق أجواء إيجابية.\n\u2022 احرص على وضع حدود لطاقتك لتجنّب الإرهاق.`
+      };
+      resultDiv.innerHTML=`<h2>نتيجتك:</h2><pre style="white-space:pre-line;text-align:right">${details[dominant]}</pre>
+      <p>إجمالي النقاط: A(${scores.A}) | B(${scores.B}) | C(${scores.C})</p>`;
+
+      const pageURL = window.location.href;
+const resultText = encodeURIComponent(`✨ نتيجتي في اختبار تحليل الشخصية:\n\n${details[dominant]}\n\nاختبر شخصيتك الآن!`);
+const whatsappURL = `https://wa.me/?text=${resultText} %0A ${pageURL}`;
+const twitterURL = `https://twitter.com/intent/tweet?text=${resultText}&url=${pageURL}`;
+
+resultDiv.innerHTML += `
+  <div style="margin-top:20px">
+    <p>شارك نتيجتك مع أصدقائك:</p>
+    <a href="${whatsappURL}" target="_blank">
+      <button style="background:#25D366;margin:5px">🔗 واتساب</button>
+    </a>
+    <a href="${twitterURL}" target="_blank">
+      <button style="background:#1DA1F2;margin:5px">🐦 تويتر</button>
+    </a>
+    <button onclick="copySiteLink()" style="background:#6b7280;color:#fff;margin:5px">📋 نسخ رابط الموقع</button>
+
+  </div>
+`;
+
+    }
+
+    render();
+    function sharePage() {
+  const shareURL = window.location.href;
+  const text = "اكتشف شخصيتك من خلال هذا الاختبار الرائع:";
+  if (navigator.share) {
+    navigator.share({
+      title: document.title,
+      text: text,
+      url: shareURL
+    });
+  } else {
+    alert("يمكنك نسخ الرابط يدويًا:\n" + shareURL);
+  }
+}
+function copySiteLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    alert("✅ تم نسخ رابط الموقع إلى الحافظة!");
+  }).catch(() => {
+    alert("❌ لم يتم النسخ، حاول يدويًا.");
+  });
+}
+
+
+  </script>
+</body>
+</html>
