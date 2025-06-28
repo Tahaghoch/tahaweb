@@ -5,55 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>محمل الوسائط - تنزيل فيديوهات وأغاني</title>
 
-  <!-- AdSense Meta -->
-  <meta name="google-adsense-account" content="ca-pub-7999209256244874">
-
-  <!-- AdSense Script -->
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-7999209256244874" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-7999209256244874" crossorigin="anonymous"></script>
 
   <style>
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: #f3f4f6;
-      color: #111827;
-      padding: 0;
-      margin: 0;
-    }
-    header, footer {
-      background: #2563eb;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
-    section {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    input, select, button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 16px;
-    }
-    button {
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1d4ed8;
-    }
+    body{font-family:'Cairo',sans-serif;background:#f3f4f6;color:#111827;margin:0}
+    header,footer{background:#2563eb;color:#fff;padding:20px;text-align:center}
+    main{max-width:720px;margin:auto;padding:20px}
+    section{background:#fff;padding:20px;border-radius:10px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+    input,select,button{width:100%;padding:12px;margin-top:10px;border:1px solid #ccc;border-radius:6px;font-size:16px}
+    button{background:#2563eb;color:#fff;border:none;cursor:pointer}
+    button:hover{background:#1d4ed8}
   </style>
 </head>
 <body>
@@ -63,70 +26,73 @@
   </header>
 
   <main>
+    <!-- تحميل الصوت -->
     <section>
       <h2>🎵 تحميل أغنية (MP3)</h2>
       <input type="text" id="audioUrl" placeholder="أدخل رابط الفيديو"/>
-      <button onclick="downloadMedia('audio')">تحميل الأغنية</button>
+      <button onclick="download('audio')">تحميل الأغنية</button>
     </section>
 
+    <!-- تحميل الفيديو -->
     <section>
       <h2>🎥 تحميل فيديو</h2>
       <input type="text" id="videoUrl" placeholder="أدخل رابط الفيديو"/>
-      <label for="quality">اختر الجودة:</label>
+      <label>اختر الجودة:</label>
       <select id="videoQuality">
-        <option value="highest">أعلى جودة</option>
-        <option value="720p">720p</option>
-        <option value="480p">480p</option>
-        <option value="360p">360p</option>
+        <option value="highestvideo">أعلى جودة</option>
+        <option value="22">720p</option>  <!-- itag 22 progressive -->
+        <option value="135">480p</option> <!-- itag 135 video‑only -->
+        <option value="18">360p</option>  <!-- itag 18 progressive -->
       </select>
-      <button onclick="downloadMedia('video')">تحميل الفيديو</button>
+      <button onclick="download('video')">تحميل الفيديو</button>
     </section>
   </main>
 
-  <!-- إعلان -->
+  <!-- إعلان أفقي -->
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-7999209256244874"
        data-ad-slot="9117689493"
        data-ad-format="auto"
        data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 
   <footer>
-    &copy; 2025 محمل الوسائط - جميع الحقوق محفوظة | TMGWEB
+    &copy; 2025 محمل الوسائط | TMGWEB
   </footer>
 
   <script>
-    async function downloadMedia(type) {
-      const url = type === 'audio' ? document.getElementById('audioUrl').value : document.getElementById('videoUrl').value;
-      const quality = document.getElementById('videoQuality')?.value || 'highest';
+    // رابط خادمك على Render
+    const API = "https://video-api-service.onrender.com";
 
-      if (!url) {
-        alert('الرجاء إدخال رابط صحيح');
-        return;
-      }
+    // دالة التحميل العامة
+    async function download(type){
+      const urlField = type==="audio" ? "audioUrl" : "videoUrl";
+      const url = document.getElementById(urlField).value.trim();
+      const quality = document.getElementById("videoQuality").value;
 
-      try {
-        const response = await fetch("https://video-api-service.onrender.com/download", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url, type, quality })
+      if(!url){alert("⚠️ الرجاء إدخال رابط صحيح"); return;}
+
+      try{
+        const res = await fetch(API+"/download",{
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify({url,type,quality})
         });
+        if(!res.ok) throw new Error("فشل التحميل");
 
-        if (!response.ok) throw new Error("فشل التحميل");
-
-        const blob = await response.blob();
-        const downloadUrl = window.URL.createObjectURL(blob);
+        const blob = await res.blob();
         const a = document.createElement("a");
-        a.href = downloadUrl;
-        a.download = type === "audio" ? "audio.mp3" : "video.mp4";
+        a.href = URL.createObjectURL(blob);
+        a.download = type==="audio" ? "audio.mp3" : "video.mp4";
+        a.style.display="none";
+        document.body.appendChild(a);
         a.click();
-        window.URL.revokeObjectURL(downloadUrl);
-      } catch (error) {
-        alert("حدث خطأ أثناء التحميل، تأكد من صحة الرابط.");
-        console.error(error);
+        document.body.removeChild(a);
+        URL.revokeObjectURL(a.href);
+      }catch(e){
+        alert("❌ حدث خطأ أثناء التحميل، تأكد من صحة الرابط.");
+        console.error(e);
       }
     }
   </script>
