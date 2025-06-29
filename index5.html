@@ -146,18 +146,36 @@
 </head>
 <body>
   <header>
-    <h1>SnapPDFImg</h1>
-    <p>تحويل بي دي أف إلى صور أو العكس <br>(إلى صور PDF)مباشرة من متصفحك</p>
-  </header>
+  <h1>📄 SnapPDFImg</h1>
+  <p>حوّل PDF ⇆ صور بسهولة وأمان بالكامل أونلاين</p>
+</header>
+
+
   <main>
+
+ <h2>مميزات الأداة</h2>
+  <ul>
+    <li>تحويل بي دي أف إلى صور JPG أو PNG بجودة عالية.</li>
+    <li>دمج عدة صور في ملف بي دي أف واحد بثوانٍ.</li>
+    <li>يدعم السحب والإفلات – لا حاجة للتسجيل.</li>
+    <li>يتم حذف الملفات تلقائيًا خلال 60 دقيقة.</li>
+  </ul>
+
+  <h2>طريقة الاستخدام</h2>
+  <ol>
+    <li>اضغط على منطقة التحميل الملونة بالأزرق أو اسحب ملفك إليها.</li>
+    <li>اختر «من بي دي أف إلى صور» أو «من صور إلى بي دي أف» حسب رغبتك.</li>
+    <li>اضغط «تحميل» لتنزيل النتيجة فورًا.</li>
+  </ol>
+
     <div class="install-btns">
       <button onclick="promptInstall()">تنزيل التطبيق</button>
       <p>أو من إعدادات المتصفح اختر "إضافة إلى الشاشة الرئيسية"</p>
     </div>
 
     <nav>
-      <button onclick="switchMode('pdf2img')">من PDF<br>إلى صور</button>
-      <button onclick="switchMode('img2pdf')">من صور<br>إلى PDF</button>
+      <button onclick="switchMode('pdf2img')">PDF<br>إلى صور</button>
+      <button onclick="switchMode('img2pdf')">صور إلى<br>PDF</button>
     </nav>
 
     <!-- PDF إلى صور -->
@@ -178,6 +196,12 @@
       <div id="pdfresult"></div>
     </section>
   </main>
+
+
+  <div>
+<button onclick="copySiteLink()" style="background:#6b7280;color:#fff;margin:5px">📋 نسخ رابط الموقع</button>
+</div>
+
 
   <!-- Banner Ad -->
   <ins class="adsbygoogle"
@@ -287,6 +311,16 @@
       const pdfURL = pdfDoc.output("bloburl");
       resultDiv.innerHTML = `<a href="${pdfURL}" download="converted.pdf"><button>تحميل الملف PDF</button></a>`;
     });
+
+
+    function copySiteLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    alert("✅ تم نسخ رابط الموقع إلى الحافظة!");
+  }).catch(() => {
+    alert("❌ لم يتم النسخ، حاول يدويًا.");
+  });
+}
+
   </script>
 </body>
 </html>
